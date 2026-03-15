@@ -1,6 +1,6 @@
 'use client'
 
-import { Outfit } from "next/font/google"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -13,11 +13,11 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { signIn } from "@/lib/auth-client"
+import { signIn, useSession } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
-const outfit = Outfit({ subsets: ["latin"] })
+
 
 export default function LoginPage() {
   const router = useRouter()
@@ -25,17 +25,16 @@ export default function LoginPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const {data: session, isPending} = useSession()
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault()
-   
-    
+
     setIsLoading(true)
     try {
       const result = await signIn.email({
         email,
         password,
       })
-      
       if(result.error){
         setError(result.error.message || "Something went wrong")
       }else{
@@ -47,9 +46,15 @@ export default function LoginPage() {
     } finally {
       setIsLoading(false)
     }
+
+
+  }
+  if(!isPending && session){    
+    router.push("/")
+    return
   }
   return (
-    <div className={`flex min-h-screen w-full items-center justify-center p-6 md:p-10 ${outfit.className}`}>
+    <div className="flex min-h-screen w-full items-center justify-center p-6 md:p-10">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Login</CardTitle>
@@ -61,7 +66,7 @@ export default function LoginPage() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} id="login-form">
+          <form id="login-form" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -84,13 +89,7 @@ export default function LoginPage() {
                     Forgot your password?
                   </a>
                 </div>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <Input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
               </div>
               {error && (
                 <p className="text-sm text-red-500">{error}</p>
@@ -100,7 +99,7 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter className="flex-col gap-2">
           <Button type="submit" form="login-form" className="w-full" disabled={isLoading}>
-            {isLoading ? "Logging in..." : "Login"}
+            Login
           </Button>
           <Button variant="outline" className="w-full">
             Login with Google

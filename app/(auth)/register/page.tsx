@@ -1,6 +1,6 @@
 'use client'
 
-import { Outfit } from "next/font/google"
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -14,14 +14,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
-import { signUp } from "@/lib/auth-client"
+import { signUp, useSession } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
-const outfit = Outfit({ subsets: ["latin"] })
+
 
 
 
 export default function RegisterPage() {
     const router = useRouter()
+    const { data: session, isPending } = useSession()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -56,11 +57,12 @@ export default function RegisterPage() {
             setIsLoading(false)
         }
     }   
-       
-
-
+    if(!isPending && session){    
+      router.push("/")
+      return
+    }
     return (
-    <div className={`flex min-h-screen w-full items-center justify-center p-6 md:p-10 ${outfit.className}`}>
+    <div className="flex min-h-screen w-full items-center justify-center p-6 md:p-10">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Register</CardTitle>
@@ -118,7 +120,7 @@ export default function RegisterPage() {
         </CardContent>
         <CardFooter className="flex-col gap-2">
           <Button type="submit" form="register-form" className="w-full" disabled={isLoading}>
-            {isLoading ? "Registering..." : "Register"}
+            Register
           </Button>
           <Button variant="outline" className="w-full">
             Register with Google
