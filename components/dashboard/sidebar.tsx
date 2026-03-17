@@ -3,8 +3,12 @@ import Link from "next/link";
 import ThemeToggle from "../ui/theme-toggle";
 import Button from "@/components/ui/dbutton";
 import { usePathname } from "next/navigation";
+import { useSession } from "@/lib/auth-client";
+
 export default function Sidebar() {
   const pathname = usePathname();
+  const { data: session, isPending } = useSession();  
+  const name = session?.user?.id;
   return (
     <aside className="w-64 bg-white border-r text-black dark:bg-gray-950 dark:text-white transition-colors">
       <div className="p-6 font-bold text-lg">
@@ -12,8 +16,8 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex flex-col gap-2 p-4">
-          <Button variant={pathname === "/dashboard" ? "primary" : "default"}><Link className="w-100p" href="/dashboard">feed</Link></Button>
-          <Button variant={pathname === "/dashboard/profile" ? "primary" : "default"}><Link className="w-full" href="/dashboard/profile">profile</Link></Button>
+          <Button variant={pathname === "/dashboard" ? "primary" : "default"}><Link className="px-4 py-2 block w-100p" href="/dashboard">feed</Link></Button>
+          <Button variant={pathname === `/dashboard/${name}` ? "primary" : "default"}><Link className="px-4 py-2 block w-100p" href={`/dashboard/${name}`}>profile</Link></Button>
           <ThemeToggle />
       </nav>
     </aside>

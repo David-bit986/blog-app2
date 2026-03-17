@@ -39,7 +39,7 @@ export default function Button({
   return (
     <button
       className={clsx(
-        "px-4 py-2 rounded-md text-sm font-medium transition-colors",
+        "rounded-md text-sm font-medium transition-colors",
         variants[variant],
         className
       )}

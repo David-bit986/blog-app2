@@ -1,8 +1,9 @@
 "use client";
-import { redirect } from "next/navigation";
+
 import { useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 import PostCard from "@/components/dashboard/post-card";
+import { useParams } from "next/navigation";
 
 interface Post {
   id: string;
@@ -15,30 +16,25 @@ interface Post {
   };
 }
 
-export default function DashboardPage() {
+export default function ProfilePage() {
   const { data: session, isPending } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
-  const [refreshKey, setRefreshKey] = useState(0);
-
-  if (!isPending && !session) {
-    redirect("/");
-  }
+  const params = useParams();
+  const profileId = params.profile as string;
 
   useEffect(() => {
-    fetch("/api/posts")
+    fetch(`/api/posts?userId=${profileId}`)
       .then((res) => res.json())
       .then((data) => setPosts(data));
-  }, [refreshKey]);
-
-  useEffect(() => {
-    const handleRefresh = () => setRefreshKey(k => k + 1);
-    window.addEventListener('posts-updated', handleRefresh);
-    return () => window.removeEventListener('posts-updated', handleRefresh);
-  }, []);
+  }, [profileId]);
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4 text-black dark:text-white">Main Feed</h1>
+      {session?.user.id === profileId ? (
+         <h1 className="text-2xl font-bold mb-4 text-black dark:text-white">Your Posts!</h1>
+      ) : (
+        <h1 className="text-2xl font-bold mb-4 text-black dark:text-white">User Posts</h1>
+      )}
       {posts.length === 0 ? (
         <p className="text-gray-500 dark:text-gray-400">No posts yet.</p>
       ) : (
@@ -56,3 +52,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+

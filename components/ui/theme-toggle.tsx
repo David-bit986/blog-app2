@@ -25,7 +25,7 @@ export default function ThemeToggle() {
   }
 
   return (
-    <Button onClick={toggleTheme}>
+    <Button className="px-4 py-2 cursor-pointer" onClick={toggleTheme}>
       {theme === "light" ? "Dark Mode" : "Light Mode"}
     </Button>
   );

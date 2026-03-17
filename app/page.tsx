@@ -18,13 +18,13 @@ export default function Home() {
   }, [session, router])
 
   if (isPending) {
-    return <div>Loading...</div>
+    return <div>The Page is Loading...</div>
   }
 
   return(
     <div className="flex  flex-col min-h-screen w-full items-center justify-center p-6 md:p-10" >
       <div className="flex flex-col gap-6">
-       <h1 className="text-4xl font-bold">welcome to my app</h1>
+       <h1 className="text-4xl font-bold">welcome to my appp</h1>
       <h2 className="text-lg font-semibold">This is a web app that uses next.js with better auth and prisma along with neondb
         <br />
         for implementating a blog
