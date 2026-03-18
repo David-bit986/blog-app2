@@ -2,6 +2,18 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
+interface PostWithAuthor {
+  id: string;
+  title: string;
+  message: string;
+  createdAt: Date;
+  authorId: string;
+  author: {
+    name: string | null;
+  };
+  likedBy: Array<{ id: string }> | [];
+}
+
 // Create a new post
 export async function POST(request: NextRequest) {
   const session = await auth.api.getSession({
@@ -68,7 +80,7 @@ export async function GET(request: NextRequest) {
     },
   });
 
-  const postsWithLiked = posts.map(post => ({
+  const postsWithLiked = posts.map((post: PostWithAuthor) => ({
     ...post,
     liked: session?.user ? post.likedBy.length > 0 : false,
     likedBy: undefined,
