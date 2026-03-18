@@ -1,6 +1,5 @@
 'use client'
 
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -16,9 +15,7 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { signUp, useSession } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
-
-
-
+import Link from "next/link"
 
 export default function RegisterPage() {
     const router = useRouter()
@@ -48,7 +45,7 @@ export default function RegisterPage() {
             if(result.error){
                 setError(result.error.message || "Something went wrong")
             }else{
-                router.push("/")
+                router.push("/login")
             }
         } catch (error) {
             console.log(error)
@@ -65,12 +62,14 @@ export default function RegisterPage() {
     <div className="flex min-h-screen w-full items-center justify-center p-6 md:p-10">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Register</CardTitle>
+          <CardTitle>Sign up</CardTitle>
           <CardDescription>
-            Enter your email below to register to your account
+            Enter your email below to create your account
           </CardDescription>
           <CardAction>
-            <Button variant="link">Login</Button>
+            <Button variant="link" asChild>
+              <Link href="/login">Log in</Link>
+            </Button>
           </CardAction>
         </CardHeader>
         <CardContent>
@@ -111,19 +110,16 @@ export default function RegisterPage() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Confirm Password</Label>
+                  <Label htmlFor="confirmPassword">Confirm Password</Label>
                 </div>
-                <Input id="password" type="password" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                <Input id="confirmPassword" type="password" required value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
               </div>    
             </div>
           </form>   
         </CardContent>
-        <CardFooter className="flex-col gap-2">
+        <CardFooter>
           <Button type="submit" form="register-form" className="w-full" disabled={isLoading}>
-            Register
-          </Button>
-          <Button variant="outline" className="w-full">
-            Register with Google
+            Sign up
           </Button>
         </CardFooter>
       </Card>

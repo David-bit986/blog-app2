@@ -1,6 +1,5 @@
 'use client'
 
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -16,8 +15,7 @@ import { Label } from "@/components/ui/label"
 import { signIn, useSession } from "@/lib/auth-client"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-
-
+import Link from "next/link"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -38,7 +36,7 @@ export default function LoginPage() {
       if(result.error){
         setError(result.error.message || "Something went wrong")
       }else{
-        router.push("/")
+        router.push("/dashboard")
       }
     } catch (error) {
       console.log(error)
@@ -46,8 +44,6 @@ export default function LoginPage() {
     } finally {
       setIsLoading(false)
     }
-
-
   }
   if(!isPending && session){    
     router.push("/")
@@ -57,12 +53,14 @@ export default function LoginPage() {
     <div className="flex min-h-screen w-full items-center justify-center p-6 md:p-10">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Log in</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Enter your email below to log in to your account
           </CardDescription>
           <CardAction>
-            <Button variant="link">Sign Up</Button>
+            <Button variant="link" asChild>
+              <Link href="/register">Sign up</Link>
+            </Button>
           </CardAction>
         </CardHeader>
         <CardContent>
@@ -80,15 +78,7 @@ export default function LoginPage() {
                 />
               </div>
               <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
+                <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
               </div>
               {error && (
@@ -97,12 +87,9 @@ export default function LoginPage() {
             </div>
           </form>
         </CardContent>
-        <CardFooter className="flex-col gap-2">
+        <CardFooter>
           <Button type="submit" form="login-form" className="w-full" disabled={isLoading}>
-            Login
-          </Button>
-          <Button variant="outline" className="w-full">
-            Login with Google
+            Log in
           </Button>
         </CardFooter>
       </Card>

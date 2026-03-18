@@ -31,8 +31,8 @@ export default function Home() {
       </h2>
       
       <p className="text-sm text-muted-foreground">please sign in or up to continue</p>
-      <Button className="w-md mt-2" onClick={() => router.push("/login")}>Sign In</Button>
-      <Button className="w-md mt-2" onClick={() => router.push("/register")}>Sign Up</Button>
+      <Button className="w-md mt-2" onClick={() => router.push("/login")}>login</Button>
+      <Button className="w-md mt-2" onClick={() => router.push("/register")}>register</Button>
       </div>
     </div>
   )
