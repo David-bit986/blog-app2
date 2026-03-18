@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog App - Learning Next.js
 
-## Getting Started
+## English (EN)
+### Project Goal
+The objective of this project is to build a functional blog application featuring user registration, personal profiles, and a global feed where posts from all users are visible. 
 
-First, run the development server:
+### Learning Journey
+This project represents my journey in learning **Next.js**. By building this app, I am exploring:
+- **App Router Navigation**: Managing routes and dynamic paths (e.g., `/profile/[name]`).
+- **Client vs. Server Components**: Understanding when to use server-side rendering for performance versus client-side state for interactivity.
+- **Data Persistence**: Implementing a mock in-memory database that survives reloads.
+- **AI-Assisted Development**: Using **Google Antigravity** to better understand code structures, architectural patterns, and modern web best practices. My main focus here was leveraging AI to deeply understand **routing** in the Next.js App Router.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Tech Stack
+- **Framework**: Next.js with TypeScript
+- **Authentication**: Better Auth
+- **Database**: Prisma ORM with Neon PostgreSQL
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Local Setup
+To run this project on your own machine:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/David-bit986/blog-app.git
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+4. **Open the app**: Go to [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Română (RO)
+### Scopul Proiectului
+Obiectivul acestui proiect este de a crea o aplicație de blog funcțională care include înregistrarea utilizatorilor, profiluri personale și un feed global unde sunt vizibile postările de la toți utilizatorii.
 
-## Learn More
+### Procesul de Învățare
+Acest proiect reprezintă parcursul meu în învățarea **Next.js**. Prin dezvoltarea acestei aplicații, explorez:
+- **Navigarea prin App Router**: Gestionarea rutelor și a căilor dinamice (ex: `/profile/[name]`).
+- **Componente de Client vs. Server**: Înțelegerea momentelor în care se folosește randarea pe server pentru performanță, comparativ cu starea pe client pentru interactivitate.
+- **Persistența Datelor**: Implementarea unei baze de date simulate în memorie care supraviețuiește reîncărcărilor.
+- **Dezvoltare Asistată de AI**: Utilizarea **Google Antigravity** pentru a înțelege mai bine structura codului, tiparele de arhitectură și bunele practici în dezvoltarea web modernă. Focusul meu principal a fost folosirea AI-ului pentru a înțelege în profunzime **rutarea** în Next.js App Router.
 
-To learn more about Next.js, take a look at the following resources:
+### Stiva Tehnologică
+- **Framework**: Next.js cu TypeScript
+- **Autentificare**: Better Auth
+- **Bază de Date**: Prisma ORM cu Neon PostgreSQL
+- **Stilizare**: Tailwind CSS
+- **Deploy**: Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Deploy (Lansare)
+Această aplicație este lansată pe **Vercel**: [blog-app-taupe-one.vercel.app](https://blog-app-taupe-one.vercel.app)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> [!NOTE]
+> **Limitarea Persistenței**: Deoarece această aplicație folosește o bază de date în memorie în scopuri de învățare, datele (utilizatorii și postările) se vor reseta periodic din cauza mediului Serverless al Vercel. Este posibil să apară „Unknown User" după o perioadă de inactivitate.
 
-## Deploy on Vercel
+### Configurare Locală
+Pentru a rula acest proiect pe propria mașină:
+1. **Clonează repository-ul**:
+   ```bash
+   git clone https://github.com/David-bit986/blog-app.git
+   ```
+2. **Instalează dependențele**:
+   ```bash
+   npm install
+   ```
+3. **Pornește serverul de dezvoltare**:
+   ```bash
+   npm run dev
+   ```
+4. **Deschide aplicația**: Mergi la [http://localhost:3000](http://localhost:3000) în browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
