@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import { useSession } from "@/lib/auth-client";
 import { useEffect, useState } from "react";
 import PostCard from "@/components/dashboard/post-card";
