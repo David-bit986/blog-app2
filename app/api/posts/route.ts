@@ -35,6 +35,9 @@ export async function POST(request: NextRequest) {
 
 // Get all posts or posts by specific user
 export async function GET(request: NextRequest) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
   const { searchParams } = new URL(request.url);
   const userId = searchParams.get("userId");
 
@@ -51,11 +54,25 @@ export async function GET(request: NextRequest) {
           name: true,
         },
       },
+      likedBy: session?.user ? {
+        where: {
+          userId: session.user.id,
+        },
+        select: {
+          id: true,
+        },
+      } : false,
     },
     orderBy: {
       createdAt: "desc",
     },
   });
 
-  return NextResponse.json(posts);
+  const postsWithLiked = posts.map(post => ({
+    ...post,
+    liked: session?.user ? post.likedBy.length > 0 : false,
+    likedBy: undefined,
+  }));
+
+  return NextResponse.json(postsWithLiked);
 }

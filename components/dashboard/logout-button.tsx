@@ -9,11 +9,11 @@ export default function LogoutButton() {
   return (
     <button
       onClick={async () => {
-        await signOut();
-        router.push("/login");
+        router.push("/");
         router.refresh();
+        await signOut();
       }}
-      className="px-4 py-2 text-sm bg-black dark:bg-white text-white dark:text-black rounded"
+      className="px-4 cursor-pointer py-2 text-sm bg-black dark:bg-white text-white dark:text-black rounded hover:bg-gray-800 dark:hover:bg-gray-200 transition"
     >
       Logout
     </button>

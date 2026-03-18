@@ -10,6 +10,8 @@ interface Post {
   message: string;
   createdAt: string;
   authorId: string;
+  likes: number;
+  liked: boolean;
   author: {
     name: string;
   };
@@ -45,11 +47,15 @@ export default function DashboardPage() {
         posts.map((post) => (
           <PostCard
             key={post.id}
+            postId={post.id}
             authorId={post.authorId}
             name={post.author.name}
             title={post.title}
             message={post.message}
             createdAt={post.createdAt}
+            likes={post.likes}
+            liked={post.liked}
+            currentUserId={session?.user?.id}
           />
         ))
       )}
