@@ -1,8 +1,15 @@
-# Blog App - Learning Next.js
+# Blog App 2 - Learning Next.js
 
 ## English (EN)
 ### Project Goal
-The objective of this project is to build a functional blog application featuring user registration, personal profiles, and a global feed where posts from all users are visible. 
+The objective of this project is to build a functional blog application featuring user registration, personal profiles, and a global feed where posts from all users are visible.
+
+### Version (v2)
+This is **Version 2** of the Blog App. The first version was built to learn the basics of Next.js routing and component structure. In this version, I've added:
+- **Proper Authentication**: Using Better Auth instead of basic session handling
+- **Real Database**: Migrated from in-memory storage to Prisma ORM with Neon PostgreSQL
+- **Enhanced Features**: Like/Unlike functionality and better UI/UX improvements
+- **Professional Setup**: Proper environment configuration and deployable production-ready code 
 
 ### Learning Journey
 This project represents my journey in learning **Next.js**. By building this app, I am exploring:
@@ -39,6 +46,13 @@ To run this project on your own machine:
 ## Română (RO)
 ### Scopul Proiectului
 Obiectivul acestui proiect este de a crea o aplicație de blog funcțională care include înregistrarea utilizatorilor, profiluri personale și un feed global unde sunt vizibile postările de la toți utilizatorii.
+
+### Versiune (v2)
+Acesta este **Versiunea 2** a Blog App. Prima versiune a fost construită pentru a învăța bazele rutării Next.js și structurii componentelor. În această versiune, am adăugat:
+- **Autentificare Adecvată**: Folosind Better Auth în loc de gestionarea simplă a sesiunilor
+- **Bază de Date Reală**: Migrare din stocarea în memorie la Prisma ORM cu Neon PostgreSQL
+- **Funcții Îmbunătățite**: Funcționalitate de Apreciere/Neapreciere și îmbunătățiri UI/UX
+- **Configurare Profesională**: Configurare corectă a mediului și cod gata pentru producție
 
 ### Procesul de Învățare
 Acest proiect reprezintă parcursul meu în învățarea **Next.js**. Prin dezvoltarea acestei aplicații, explorez:
