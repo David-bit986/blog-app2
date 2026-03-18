@@ -11,7 +11,7 @@ interface PostWithAuthor {
   author: {
     name: string | null;
   };
-  likedBy: Array<{ id: string }> | [];
+  likedBy: Array<{ id: string }> | false;
 }
 
 // Create a new post
@@ -82,7 +82,7 @@ export async function GET(request: NextRequest) {
 
   const postsWithLiked = posts.map((post: PostWithAuthor) => ({
     ...post,
-    liked: session?.user ? post.likedBy.length > 0 : false,
+    liked: session?.user && Array.isArray(post.likedBy) ? post.likedBy.length > 0 : false,
     likedBy: undefined,
   }));
 
