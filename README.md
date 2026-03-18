@@ -25,11 +25,14 @@ This project represents my journey in learning **Next.js**. By building this app
 - **Styling**: Tailwind CSS
 - **Deployment**: Vercel
 
+### Live Deployment
+**View the app live**: [https://blog-app2-theta.vercel.app/dashboard](https://blog-app2-theta.vercel.app/dashboard)
+
 ### Local Setup
 To run this project on your own machine:
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/David-bit986/blog-app.git
+   git clone https://github.com/David-bit986/blog-app2.git
    ```
 2. **Install dependencies**:
    ```bash
@@ -71,14 +74,13 @@ Acest proiect reprezintă parcursul meu în învățarea **Next.js**. Prin dezvo
 ### Deploy (Lansare)
 Această aplicație este lansată pe **Vercel**: [blog-app-taupe-one.vercel.app](https://blog-app-taupe-one.vercel.app)
 
-> [!NOTE]
-> **Limitarea Persistenței**: Deoarece această aplicație folosește o bază de date în memorie în scopuri de învățare, datele (utilizatorii și postările) se vor reseta periodic din cauza mediului Serverless al Vercel. Este posibil să apară „Unknown User" după o perioadă de inactivitate.
+
 
 ### Configurare Locală
 Pentru a rula acest proiect pe propria mașină:
 1. **Clonează repository-ul**:
    ```bash
-   git clone https://github.com/David-bit986/blog-app.git
+   git clone https://github.com/David-bit986/blog-app2.git
    ```
 2. **Instalează dependențele**:
    ```bash
