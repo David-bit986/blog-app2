@@ -42,11 +42,11 @@ export default function Header() {
   };
 
   return (
-    <header className="flex flex-col w-full px-6 py-4 bg-white border-b text-black dark:bg-gray-950 dark:text-white">
+    <header className="flex flex-col w-full px-4 sm:px-6 py-4 bg-white border-b text-black dark:bg-gray-950 dark:text-white">
       
       {/* Top row */}
-      <div className="flex items-center justify-between w-full mb-3">
-        <div className="font-medium">
+      <div className="flex sm:flex-row items-start sm:items-center justify-between w-full mb-3 gap-2 sm:gap-0">
+        <div className="font-medium text-sm sm:text-base">
           Welcome, {name}
         </div>
         <LogoutButton />
@@ -55,27 +55,27 @@ export default function Header() {
       {/* Separator */}
       <div className="w-full border-t border-gray-200 dark:border-gray-700 mb-3"></div>
 
-      {/* Bottom section */}
-      <div className="flex gap-2 w-full items-start">
+      {/* Bottom section - Responsive layout */}
+      <div className="flex flex-col md:flex-row gap-2 w-full items-stretch md:items-start">
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-1/4 px-3 py-2 border rounded-md text-black dark:text-white bg-white dark:bg-gray-800 dark:border-gray-700"
+          className="w-full md:w-1/4 px-3 py-2 border rounded-md text-black dark:text-white bg-white dark:bg-gray-800 dark:border-gray-700 text-sm"
         />
 
         <textarea
           placeholder="Message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="flex-1 px-3 py-2 border rounded-md text-black dark:text-white bg-white dark:bg-gray-800 dark:border-gray-700 resize-none h-10"
+          className="w-full md:flex-1 px-3 py-2 border rounded-md text-black dark:text-white bg-white dark:bg-gray-800 dark:border-gray-700 resize-none h-10 text-sm"
         />
 
         <button
           onClick={handleCreate}
           disabled={loading}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md disabled:opacity-50 dark:bg-blue-600 cursor-pointer hover:bg-blue-600 dark:hover:bg-blue-700 transition"
+          className="w-full md:w-auto bg-blue-500 text-white px-4 py-2 rounded-md disabled:opacity-50 dark:bg-blue-600 cursor-pointer hover:bg-blue-600 dark:hover:bg-blue-700 transition text-sm whitespace-nowrap"
         >
           {loading ? "Adding..." : "Add Post"}
         </button>

@@ -10,7 +10,7 @@ export default function Sidebar() {
   const { data: session, isPending } = useSession();  
   const name = session?.user?.id;
   return (
-    <aside className="w-64 bg-white border-r text-black dark:bg-gray-950 dark:text-white transition-colors">
+    <aside className="w-full h-[stretch]  bg-white border-b md:border-b-0 md:border-r text-black dark:bg-gray-950 dark:text-white transition-colors">
       <div className="p-6 font-bold text-lg">
         MyApp
       </div>

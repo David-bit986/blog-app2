@@ -46,22 +46,22 @@ export default function PostCard({ name, authorId, title, message, createdAt, li
   };
 
   return (
-    <div className="p-4 border rounded-lg bg-white dark:bg-gray-900 dark:border-gray-700 mb-3">
+    <div className="p-3 sm:p-4 border rounded-lg bg-white dark:bg-gray-900 dark:border-gray-700 mb-3">
       <Link 
         href={`/dashboard/${authorId}`}
-        className="flex items-center justify-between rounded bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors cursor-pointer -mx-4 -mt-4 px-4 py-2 mb-2"
+        className="flex  sm:flex-row items-start sm:items-center justify-between rounded bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors cursor-pointer -mx-3 sm:-mx-4 -mt-3 sm:-mt-4 px-3 sm:px-4 py-2 mb-2 gap-2 sm:gap-0"
       >
-        <span className="font-medium text-blue-700 dark:text-blue-300">{name}</span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">{date}</span>
+        <span className="font-medium text-blue-700 dark:text-blue-300 text-sm sm:text-base">{name}</span>
+        <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{date}</span>
       </Link>
-      <h3 className="font-semibold text-lg text-black dark:text-white mb-2">{title}</h3>
-      <p className="text-gray-700 dark:text-gray-300">{message}</p>
-      <div className="border-t border-gray-200 dark:border-gray-700 mt-4 pt-3 flex justify-between">
-        <button onClick={handleLike} className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 cursor-pointer transition">
+      <h3 className="font-semibold text-base sm:text-lg text-black dark:text-white mb-2">{title}</h3>
+      <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300">{message}</p>
+      <div className="border-t items-start border-gray-200 dark:border-gray-700 mt-4 pt-3 flex sm:flex-row justify-between gap-2 sm:gap-0">
+        <button onClick={handleLike} className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 cursor-pointer transition text-sm">
           {isLiked ? "♥" : "♡"} {likeCount}
         </button>
         {currentUserId === authorId && (
-          <button onClick={deletePost} className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 cursor-pointer transition">✕ Delete</button>
+          <button onClick={deletePost} className="text-red-500 hover:text-red-600 dark:text-red-400 dark:hover:text-red-300 cursor-pointer transition text-sm text-left sm:text-right">✕ Delete</button>
         )}
       </div>
     </div>

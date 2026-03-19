@@ -43,7 +43,7 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4 text-black dark:text-white">Main Feed</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 text-black dark:text-white">Main Feed</h1>
       {posts.length === 0 ? (
         <p className="text-gray-500 dark:text-gray-400">No posts yet.</p>
       ) : (

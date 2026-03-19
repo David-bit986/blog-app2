@@ -17,13 +17,16 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex h-screen bg-gray-100 text-black dark:bg-gray-950 dark:text-white transition-colors">
-      <Sidebar />
+    <div className="flex flex-col md:flex-row h-screen bg-gray-100 text-black dark:bg-gray-950 dark:text-white transition-colors">
+      {/* Sidebar at top on mobile, left side on desktop with full height */}
+      <div className="w-full md:w-64 md:h-screen md:overflow-y-auto">
+        <Sidebar />
+      </div>
 
-      <div className="flex flex-col flex-1">
+      {/* Header and main content */}
+      <div className="flex flex-col flex-1 w-full">
         <Header />
-
-        <main className="flex-1 p-6 overflow-y-auto">
+        <main className="flex-1 p-4 sm:p-6 overflow-y-auto">
           {children}
         </main>
       </div>
