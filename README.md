@@ -72,7 +72,7 @@ Acest proiect reprezintă parcursul meu în învățarea **Next.js**. Prin dezvo
 - **Deploy**: Vercel
 
 ### Deploy (Lansare)
-Această aplicație este lansată pe **Vercel**: [blog-app-taupe-one.vercel.app](https://blog-app-taupe-one.vercel.app)
+Această aplicație este lansată pe **Vercel**: [https://blog-app2-theta.vercel.app/dashboard](https://blog-app2-theta.vercel.app/dashboard)
 
 
 
